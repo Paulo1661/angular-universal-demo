@@ -11,6 +11,7 @@ const fruits = [
   {id: 4, name: "Guava"},
   {id: 5, name: "Mangoe"},
   {id: 6, name: "Avocado"},
+  {id: 7, name: "Apricot"},
 ]
 @Injectable({
   providedIn: 'any'
