@@ -8,10 +8,10 @@ const fruits = [
   {id: 2, name: "Orange"},
   {id: 3, name: "Kiwi"},
   {id: 4, name: "Apple"},
-  {id: 4, name: "Guava"},
-  {id: 5, name: "Mangoe"},
-  {id: 6, name: "Avocado"},
-  {id: 7, name: "Apricot"},
+  {id: 5, name: "Guava"},
+  {id: 6, name: "Mangoe"},
+  {id: 7, name: "Avocado"},
+  {id: 8, name: "Apricot"},
 ]
 @Injectable({
   providedIn: 'any'
@@ -31,6 +31,6 @@ export class FruitsService {
 
   getFruitById(id: number):Observable<Fruit> {
     //return this.httpClient.get<Fruit>(this.baseUrl+"/fruits/"+id);
-    return of(fruits[id]);
+    return of(fruits[id-1]);
   }
 }
