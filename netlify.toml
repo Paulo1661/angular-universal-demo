@@ -1,7 +1,7 @@
 [build]
   command = "npm run prerender"
   functions = "./functions"
-  publish = "dist/Fruits"
+  publish = "dist/Fruits/browser"
 [dev]
   command = "npm run start"
   functions = "./functions"
