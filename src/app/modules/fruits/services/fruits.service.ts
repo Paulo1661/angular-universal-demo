@@ -1,9 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { Fruit } from 'src/app/models/fruit.model';
 import { environment } from "src/environments/environment.prod";
-
+const fruits = [
+  {id: 1, name: "Banane"},
+  {id: 2, name: "Orange"},
+  {id: 3, name: "Kiwi"},
+  {id: 4, name: "Apple"},
+  {id: 4, name: "Guava"},
+  {id: 5, name: "Mangoe"},
+]
 @Injectable({
   providedIn: 'any'
 })
@@ -16,10 +23,12 @@ export class FruitsService {
   }
 
   getFruits(): Observable<Fruit[]> {
-    return this.httpClient.get<Fruit[]>(this.baseUrl+"/fruits");
+    //return this.httpClient.get<Fruit[]>(this.baseUrl+"/fruits");
+    return of(fruits);
   }
 
   getFruitById(id: number):Observable<Fruit> {
-    return this.httpClient.get<Fruit>(this.baseUrl+"/fruits/"+id);
+    //return this.httpClient.get<Fruit>(this.baseUrl+"/fruits/"+id);
+    return of(fruits[id]);
   }
 }
