@@ -1,7 +1,7 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { Fruit } from 'src/app/models/fruit.model';
 import { FruitsService } from '../../services/fruits.service';
 
@@ -13,6 +13,7 @@ import { FruitsService } from '../../services/fruits.service';
 export class FruitComponent implements OnInit {
 
   fruit$: Observable<Fruit>;
+  fruitSubscription: Subscription;
 
   constructor(
     private fruitsService: FruitsService,
@@ -30,15 +31,17 @@ export class FruitComponent implements OnInit {
   }
 
   onDownload() {
-    this.fruit$.subscribe(fruit=>{
-        //const fruitDetails = JSON.stringify(this.fruitsService.convertToJson(fruit));
-        console.log(fruit);
+    this.fruitSubscription=this.fruit$.subscribe(fruit=>{
         const file = new Blob([JSON.stringify(fruit)], { type: 'text/txt' });
         const link = document.createElement('a');
         link.href = window.URL.createObjectURL(file);
         link.download = `fruit-details-${fruit.id}.txt`;
         link.click();
     });
+  }
+
+  ngOnDestroy(): void {
+    this.fruitSubscription.unsubscribe();
   }
 
 }
