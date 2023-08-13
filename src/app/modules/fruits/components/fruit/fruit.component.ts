@@ -15,7 +15,7 @@ export class FruitComponent implements OnInit {
   fruit$: Observable<Fruit>;
 
   constructor(
-    private fruitsService: FruitsService, 
+    private fruitsService: FruitsService,
     private route: ActivatedRoute,
     private location: Location
   ) { }
@@ -27,6 +27,18 @@ export class FruitComponent implements OnInit {
 
   onBack() {
     this.location.back();
+  }
+
+  onDownload() {
+    this.fruit$.subscribe(fruit=>{
+        //const fruitDetails = JSON.stringify(this.fruitsService.convertToJson(fruit));
+        console.log(fruit);
+        const file = new Blob([JSON.stringify(fruit)], { type: 'text/txt' });
+        const link = document.createElement('a');
+        link.href = window.URL.createObjectURL(file);
+        link.download = `fruit-details-${fruit.id}.txt`;
+        link.click();
+    });
   }
 
 }

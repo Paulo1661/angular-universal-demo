@@ -4,6 +4,7 @@
 
 <h2>{{(fruit$ | async)?.name}}</h2>
 <p>Fruit id : <span class="text-danger">{{(fruit$ | async)?.id}}</span></p>
-<p class="description">Description du fruit </p>
+<p class="description">{{(fruit$ | async)?.description}}</p>
 
 <i (click)="onBack()" class="bi bi-arrow-left-square-fill"></i>
+<i (click)="onDownload()" class="bi bi-cloud-download-fill"></i>
