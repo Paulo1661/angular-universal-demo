@@ -31,8 +31,6 @@ export class FruitComponent implements OnInit {
 
   onDownload() {
     this.fruit$.subscribe(fruit=>{
-        //const fruitDetails = JSON.stringify(this.fruitsService.convertToJson(fruit));
-        console.log(fruit);
         const file = new Blob([JSON.stringify(fruit)], { type: 'text/txt' });
         const link = document.createElement('a');
         link.href = window.URL.createObjectURL(file);
