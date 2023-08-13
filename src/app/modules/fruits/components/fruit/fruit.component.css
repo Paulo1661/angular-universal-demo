@@ -5,10 +5,19 @@ h1 {
 }
 
 i {
-    font-size: 2rem; 
-    color: #0d6efd; 
+    font-size: 2rem;
+    color: #0d6efd;
     cursor: pointer;
 }
+
+
+i.bi-cloud-download-fill {
+  color: #265557;
+  margin-left: 1rem;
+}
+
+
 .description {
     margin-bottom: 1rem;
+    font-size: 2rem;
 }
